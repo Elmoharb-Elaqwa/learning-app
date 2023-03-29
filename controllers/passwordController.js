@@ -16,7 +16,7 @@ export const sendForgotPasswordLink = async (req, res) => {
   const token = jwt.sign({ email: user.email, id: user._id }, secret, {
     expiresIn: '10m',
   });
-  const link = `https://dizzy-cyan-polo-shirt.cyclic.app/password/reset-password/${user._id}/${token}`;
+  const link = `${process.env.SERVER_URL}/password/reset-password/${user._id}/${token}`;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
