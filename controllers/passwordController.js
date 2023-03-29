@@ -21,7 +21,7 @@ export const sendForgotPasswordLink = async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.MY_EMAIL,
+      user: `${process.env.MY_EMAIL}`,
       pass: process.env.MY_PASS,
     },
   });
