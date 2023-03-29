@@ -12,11 +12,11 @@ export const sendForgotPasswordLink = async (req, res) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  const secret = process.env.JWT_SECRET + user.password;
+  const secret = `${process.env.JWT_SECRET}` + user.password;
   const token = jwt.sign({ email: user.email, id: user._id }, secret, {
     expiresIn: '10m',
   });
-  const link = `http://localhost:3001/password/reset-password/${user._id}/${token}`;
+  const link = `https://dizzy-cyan-polo-shirt.cyclic.app/password/reset-password/${user._id}/${token}`;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -52,7 +52,7 @@ export const getResetPassword = async (req, res) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  const secret = process.env.JWT_SECRET + user.password;
+  const secret = `${process.env.JWT_SECRET}` + user.password;
   try {
     jwt.verify(req.params.token, secret);
     // res.render('reset-password', { email: user.email });
@@ -72,7 +72,7 @@ export const resetThePassword = async (req, res) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  const secret = process.env.JWT_SECRET + user.password;
+  const secret = `${process.env.JWT_SECRET}` + user.password;
   try {
     jwt.verify(req.params.token, secret);
     const salt = await bcrypt.genSalt(10);

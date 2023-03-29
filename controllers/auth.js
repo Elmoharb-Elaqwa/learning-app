@@ -43,7 +43,7 @@ export const login = async (req, res) => {
         isTeacher: user.isTeacher,
         courses: user.courses,
       },
-      process.env.JWT_SECRET
+      `${process.env.JWT_SECRET}`
     );
     delete user.password;
     res.status(200).json({ token, user });
