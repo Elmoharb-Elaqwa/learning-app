@@ -26,7 +26,7 @@ export const sendForgotPasswordLink = async (req, res) => {
     },
   });
   const mailOptions = {
-    from: process.env.MY_EMAIL,
+    from: `${process.env.MY_EMAIL}`,
     to: user.email,
     subject: 'Reset Password',
     html: `<div>
