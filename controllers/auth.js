@@ -119,7 +119,7 @@ export const userCourses = async (req, res) => {
 
     res.status(200).json(allCourses.courses);
   } catch (error) {
-    console.log(error.message);
+    res.json(error.message);
   }
 };
 
