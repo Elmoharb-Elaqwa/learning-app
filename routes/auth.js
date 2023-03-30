@@ -17,7 +17,7 @@ const router = express.Router({ mergeParams: true });
 router.post('/login', login);
 router.post('/register', register);
 router.patch('/reset', resetPassword);
-router.patch('/:id', verifyToken, updateUserInformation);
+router.patch('/', verifyToken, updateUserInformation);
 router.delete('/', verifyToken, deleteUserAccount);
 router.get('/', [verifyToken, admin], getAllUsers);
 router.get('/courses', verifyToken, userCourses);
