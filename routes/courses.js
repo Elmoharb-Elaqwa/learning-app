@@ -18,7 +18,7 @@ coursesRoute.patch('/:id', [verifyToken, admin], updateCourseById);
 
 // add course to specific category
 coursesRoute.put(
-  '/addCoursesToSpecificCategory',
+  '/addCoursesToSpecificCategory/:categoryId',
   [verifyToken, admin],
   addCoursesToSpecificCate
 );

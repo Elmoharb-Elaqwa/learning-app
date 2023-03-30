@@ -58,7 +58,7 @@ export const updateCourseById = async (req, res) => {
 
 // add course to specific category
 export const addCoursesToSpecificCate = async (req, res) => {
-  const { categoryId } = req.body;
+  const { categoryId } = req.params;
   const { name, teacher, description, levelsOfCourse, price } = req.body;
   if (!categoryId) return res.status(400).send('Category id is required');
 
