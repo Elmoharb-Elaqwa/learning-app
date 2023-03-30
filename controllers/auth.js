@@ -85,16 +85,15 @@ export const getCoursesUserSubscription = async (req, res) => {
 
 // update user information
 export const updateUserInformation = async (req, res) => {
-  const { id } = req.params;
   const { name, email, phone, birth } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!mongoose.Types.ObjectId.isValid(req.user.id)) {
     return res.status(404).send('No user with that id');
   }
 
   try {
     if (name && email && phone && birth) {
       const updatedUser = await User.findByIdAndUpdate(
-        id,
+        req.user.id,
         {
           fullName: name,
           email: email,
