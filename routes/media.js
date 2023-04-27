@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/videos');
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
+    cb(null, new Date.toISOString().replace(/:/g,"-") + file.originalname);
   },
 });
 const upload = multer({
